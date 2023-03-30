@@ -14,7 +14,7 @@ interface ApiService {
         @Query("language") language: String,
     ): Response<GenresDto>
 
-    @GET("genre/movie/list")
+    @GET("discover/movie")
     suspend fun getMoviesGenre(
         @Query("api_key") apiKey: String = Constants.API_KEY,
         @Query("language") language: String,

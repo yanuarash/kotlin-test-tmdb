@@ -2,6 +2,7 @@ package com.example.kotlintesttmdb
 
 import android.app.Application
 import com.example.kotlintesttmdb.di.networkModule
+import com.example.kotlintesttmdb.di.repoModule
 import com.example.kotlintesttmdb.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -13,7 +14,7 @@ class KotlinTestTmdbApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val modules = listOf(networkModule, viewModelModule);
+        val modules = listOf(networkModule, viewModelModule, repoModule);
 
         startKoin{
             androidLogger(level = Level.NONE)
