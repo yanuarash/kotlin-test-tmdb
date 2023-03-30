@@ -12,29 +12,36 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.kotlintesttmdb.pages.home.HomeViewModel
 import org.koin.androidx.compose.getViewModel
 
 @ExperimentalMaterialApi
 @Composable
-fun MoviesGenre(viewModel: MoviesGenreViewModel = getViewModel(), withGenres: String){
+fun MoviesGenre(
+    viewModel: MoviesGenreViewModel = getViewModel(),
+    withGenres: String,
+    navHostController: NavHostController
+) {
     val movieGenreState = viewModel.state.value
     val movieGenreList = movieGenreState.data?.results
     val page = 1
-    
-    LaunchedEffect(key1 = withGenres){
+
+    LaunchedEffect(key1 = withGenres) {
         viewModel.getMoviesGenre(page, withGenres)
     }
 
     Scaffold() { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
             if (movieGenreList != null) {
-                LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)){
-                    items(movieGenreList){item ->
+                LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
+                    items(movieGenreList) { item ->
                         Card(modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
-                            .clickable { }) {
+                            .clickable {
+                                navHostController.navigate("moviesDetail/${item.id}")
+                            }) {
                             Text(text = item.title)
                         }
                     }
