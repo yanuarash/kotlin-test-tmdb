@@ -8,8 +8,8 @@ import com.example.kotlintesttmdb.network.toDomain
 
 class MoviesReviewsRepoImpl constructor(private val apiService: ApiService): MoviesReviewsRepo, ApiRequest(){
 
-    override suspend fun getMoviesReviews(movieId: Int): MoviesReviews {
-        val res = apiRequest { apiService.getMoviesReviews(movieId) }
+    override suspend fun getMoviesReviews(movieId: Int, page: Int): MoviesReviews {
+        val res = apiRequest { apiService.getMoviesReviews(movieId, page) }
         return res.toDomain()
     }
 }

@@ -9,10 +9,10 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class MoviesReviewsUseCase constructor(private val moviesGenreRepo: MoviesReviewsRepo) {
-    operator fun invoke(movieId: Int): Flow<Resource<MoviesReviews>> = flow{
+    operator fun invoke(movieId: Int, page: Int): Flow<Resource<MoviesReviews>> = flow{
         try {
             emit(Resource.Loading())
-            val res = moviesGenreRepo.getMoviesReviews(movieId)
+            val res = moviesGenreRepo.getMoviesReviews(movieId, page)
             emit(Resource.Success(res))
         }
         catch (e: HttpException){

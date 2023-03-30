@@ -4,5 +4,5 @@ import com.example.kotlintesttmdb.models.MoviesGenre
 import com.example.kotlintesttmdb.models.MoviesReviews
 
 interface MoviesReviewsRepo{
-    suspend fun getMoviesReviews(movieId: Int): MoviesReviews
+    suspend fun getMoviesReviews(movieId: Int, page: Int): MoviesReviews
 }
