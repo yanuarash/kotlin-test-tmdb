@@ -20,6 +20,6 @@ interface ApiService {
         @Query("language") language: String,
         @Query("sort_by") sortBy: String,
         @Query("page") page: Int,
-        @Query("with_genres") withGenres: Int,
+        @Query("with_genres") withGenres: String,
     ): Response<MoviesGenreDto>
 }
