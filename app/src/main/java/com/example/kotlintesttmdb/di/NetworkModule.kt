@@ -21,8 +21,6 @@ val networkModule = module{
             .build()
             .create(ApiService::class.java)
     }
-    single{GenresUseCase(get())}
-    single<GenresRepo>{ GenreRepoImpl(get())}
 }
 
 fun provideOkhttp(): OkHttpClient{
