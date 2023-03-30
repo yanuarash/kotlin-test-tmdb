@@ -20,8 +20,8 @@ fun MoviesReviews(
     viewModel: MoviesReviewsViewModel = getViewModel(),
     movieId: Int,
 ) {
-    val movieGenreState = viewModel.state.value
-    val movieGenreList = movieGenreState.data?.results
+    val reviewsState = viewModel.state.value
+    val reviewsList = reviewsState.data?.results
     val page = 1
 
     LaunchedEffect(key1 = movieId) {
@@ -30,9 +30,9 @@ fun MoviesReviews(
 
     Scaffold() { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
-            if (movieGenreList != null) {
+            if (reviewsList != null) {
                 LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
-                    items(movieGenreList) { item ->
+                    items(reviewsList) { item ->
                         Card(modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
