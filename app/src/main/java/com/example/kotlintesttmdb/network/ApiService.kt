@@ -1,10 +1,7 @@
 package com.example.kotlintesttmdb.network
 
-import com.example.kotlintesttmdb.models.GenresDto
 import com.example.kotlintesttmdb.helper.Constants
-import com.example.kotlintesttmdb.models.MoviesDetail
-import com.example.kotlintesttmdb.models.MoviesDetailDto
-import com.example.kotlintesttmdb.models.MoviesGenreDto
+import com.example.kotlintesttmdb.models.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -31,4 +28,9 @@ interface ApiService {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = Constants.API_KEY,
     ): Response<MoviesDetailDto>
+    @GET("movie/{movie_id}/reviews")
+    suspend fun getMoviesReviews(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY,
+    ): Response<MoviesReviewsDto>
 }

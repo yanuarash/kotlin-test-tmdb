@@ -13,3 +13,7 @@ internal fun MoviesGenreDto.toDomain(): MoviesGenre {
 internal fun MoviesDetailDto.toDomain(): MoviesDetail {
     return MoviesDetail(backdrop_path, budget, id, title, release_date, tagline, overview, vote_average, vote_count, genres)
 }
+
+internal fun MoviesReviewsDto.toDomain(): MoviesReviews {
+    return MoviesReviews(id, page, total_pages, total_results, results)
+}
