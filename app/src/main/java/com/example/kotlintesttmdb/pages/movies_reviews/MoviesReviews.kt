@@ -12,8 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import com.example.kotlintesttmdb.pages.movies_genre.MoviesGenreViewModel
 import org.koin.androidx.compose.getViewModel
 
 @ExperimentalMaterialApi
@@ -21,7 +19,6 @@ import org.koin.androidx.compose.getViewModel
 fun MoviesReviews(
     viewModel: MoviesReviewsViewModel = getViewModel(),
     movieId: Int,
-    navHostController: NavHostController
 ) {
     val movieGenreState = viewModel.state.value
     val movieGenreList = movieGenreState.data?.results
@@ -40,7 +37,6 @@ fun MoviesReviews(
                             .fillMaxWidth()
                             .padding(8.dp)
                             .clickable {
-                                navHostController.navigate("moviesDetail/${item.id}")
                             }) {
                             Text(text = item.author)
                             Text(text = item.content)
