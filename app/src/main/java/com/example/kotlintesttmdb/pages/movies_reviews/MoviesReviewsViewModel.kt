@@ -14,8 +14,8 @@ class MoviesReviewsViewModel constructor(private val moviesReviewsUseCase: Movie
     private val _state = mutableStateOf(MoviesReviewsState())
     val state: State<MoviesReviewsState> = _state
 
-    fun getMoviesGenre(movieId: Int, page: Int){
-        val res = moviesReviewsUseCase.invoke(movieId)
+    fun getMoviesReviews(movieId: Int, page: Int){
+        val res = moviesReviewsUseCase.invoke(movieId, page)
         res.onEach { result ->
             when(result){
                 is Resource.Loading -> {

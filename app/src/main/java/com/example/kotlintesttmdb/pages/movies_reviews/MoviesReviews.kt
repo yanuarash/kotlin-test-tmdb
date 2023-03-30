@@ -25,7 +25,7 @@ fun MoviesReviews(
     val page = 1
 
     LaunchedEffect(key1 = movieId) {
-        viewModel.getMoviesGenre(movieId, page)
+        viewModel.getMoviesReviews(movieId, page)
     }
 
     Scaffold() { paddingValues ->
