@@ -18,9 +18,9 @@ import org.koin.androidx.compose.getViewModel
 @ExperimentalMaterialApi
 @Composable
 fun MoviesGenre(viewModel: MoviesGenreViewModel = getViewModel(), withGenres: String){
-    val genresState = viewModel.state.value
-    val genreList = genresState.data?.results
-    val page = 1;
+    val movieGenreState = viewModel.state.value
+    val movieGenreList = movieGenreState.data?.results
+    val page = 1
     
     LaunchedEffect(key1 = withGenres){
         viewModel.getMoviesGenre(page, withGenres)
@@ -28,9 +28,9 @@ fun MoviesGenre(viewModel: MoviesGenreViewModel = getViewModel(), withGenres: St
 
     Scaffold() { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
-            if (genreList != null) {
+            if (movieGenreList != null) {
                 LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)){
-                    items(genreList){item ->
+                    items(movieGenreList){item ->
                         Card(modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp)
