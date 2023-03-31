@@ -11,14 +11,15 @@ import com.example.kotlintesttmdb.pages.home.GenresState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-class MoviesGenreViewModel constructor(private val moviesGenreUseCase: MoviesGenreUseCase) : ViewModel() {
+class MoviesGenreViewModel constructor(private val moviesGenreUseCase: MoviesGenreUseCase) :
+    ViewModel() {
     private val _state = mutableStateOf(MoviesGenreState())
     val state: State<MoviesGenreState> = _state
 
-    fun getMoviesGenre(page: Int, withGenres: String){
-        val res = moviesGenreUseCase.invoke(page, withGenres)
+    fun getMoviesGenre(page: Int, withGenres: String) {
+        val res = moviesGenreUseCase.invoke(page = page, withGenres = withGenres)
         res.onEach { result ->
-            when(result){
+            when (result) {
                 is Resource.Loading -> {
                     _state.value = MoviesGenreState(isLoading = true)
                 }
