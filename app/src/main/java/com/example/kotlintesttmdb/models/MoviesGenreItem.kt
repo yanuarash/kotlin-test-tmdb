@@ -1,6 +1,7 @@
 package com.example.kotlintesttmdb.models
 
 data class MoviesGenreItem(
+    val backdrop_path: String,
     val poster_path: String,
     val adult: Boolean,
     val overview: String,
