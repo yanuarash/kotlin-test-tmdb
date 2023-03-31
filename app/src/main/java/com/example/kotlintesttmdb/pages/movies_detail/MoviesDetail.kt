@@ -85,7 +85,7 @@ fun MoviesDetail(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(all = 12.dp),
-                        onClick = { /*TODO*/ }) {
+                        onClick = { navHostController.navigate("moviesReviews/${moviesDetail.id}") }) {
                         Text(text = "User Reviews - ${moviesDetail.vote_average}")
                     }
                 }

@@ -37,7 +37,9 @@ fun MoviesGenre(
         viewModel.getMoviesGenre(page, withGenres)
     }
 
-    Scaffold() { paddingValues ->
+    Scaffold(topBar = {
+        TopAppBar(title = { Text(text = "Movies Genre") })
+    }) { paddingValues ->
         Box(modifier = Modifier.padding(paddingValues)) {
             if (movieGenreList != null) {
                 LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
