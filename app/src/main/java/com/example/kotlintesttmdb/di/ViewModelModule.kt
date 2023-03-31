@@ -4,6 +4,7 @@ import com.example.kotlintesttmdb.pages.home.HomeViewModel
 import com.example.kotlintesttmdb.pages.movies_detail.MoviesDetailViewModel
 import com.example.kotlintesttmdb.pages.movies_genre.MoviesGenreViewModel
 import com.example.kotlintesttmdb.pages.movies_reviews.MoviesReviewsViewModel
+import com.example.kotlintesttmdb.pages.movies_videos.MoviesVideosViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -12,4 +13,5 @@ val viewModelModule = module {
     viewModel{MoviesGenreViewModel(get())}
     viewModel{MoviesDetailViewModel(get())}
     viewModel{MoviesReviewsViewModel(get())}
+    viewModel{MoviesVideosViewModel(get())}
 }

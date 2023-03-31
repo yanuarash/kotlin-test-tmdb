@@ -17,6 +17,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.kotlintesttmdb.helper.Constants
+import com.example.kotlintesttmdb.pages.movies_videos.MoviesVideos
 import org.koin.androidx.compose.getViewModel
 
 @ExperimentalMaterialApi
@@ -36,9 +37,11 @@ fun MoviesDetail(
     Scaffold() { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
             if (moviesDetail != null) {
-                Column(modifier = Modifier
-                    .weight(2f)
-                    .fillMaxHeight()) {
+                Column(
+                    modifier = Modifier
+                        .weight(2f)
+                        .fillMaxHeight()
+                ) {
                     Column() {
                         AsyncImage(
                             model = ImageRequest.Builder(LocalContext.current)
@@ -53,6 +56,7 @@ fun MoviesDetail(
                         Column(
                             modifier = Modifier
                                 .padding(all = 10.dp)
+                                .fillMaxWidth()
                                 .align(Alignment.CenterHorizontally)
                         ) {
                             Text(
@@ -68,7 +72,19 @@ fun MoviesDetail(
                                     textAlign = TextAlign.Center
                                 )
                             }
+                            Text(
+                                text = "✪${moviesDetail.vote_average}",
+                                color = Color.LightGray,
+                                textAlign = TextAlign.Center
+                            )
                         }
+                        Divider(
+                            color = Color.DarkGray, modifier = Modifier
+                                .fillMaxWidth()
+                                .width(1.dp)
+                        )
+                        Text(text = "Youtube Videos", fontWeight = FontWeight.Bold, fontSize = 20.sp, modifier = Modifier.padding(start = 8.dp, top = 8.dp))
+                        MoviesVideos(movieId = movieId)
                         Divider(
                             color = Color.DarkGray, modifier = Modifier
                                 .fillMaxWidth()
@@ -84,7 +100,7 @@ fun MoviesDetail(
                             .fillMaxWidth()
                             .padding(all = 12.dp),
                         onClick = { navHostController.navigate("moviesReviews/${moviesDetail.id}") }) {
-                        Text(text = "User Reviews - ${moviesDetail.vote_average}")
+                        Text(text = "User Reviews(${moviesDetail.vote_average})")
                     }
                 }
             } else {
@@ -95,3 +111,5 @@ fun MoviesDetail(
         }
     }
 }
+
+

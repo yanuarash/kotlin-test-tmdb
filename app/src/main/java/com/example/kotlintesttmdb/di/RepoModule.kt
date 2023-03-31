@@ -1,10 +1,7 @@
 package com.example.kotlintesttmdb.di
 
 import com.example.kotlintesttmdb.network.repo.*
-import com.example.kotlintesttmdb.network.usecases.GenresUseCase
-import com.example.kotlintesttmdb.network.usecases.MoviesDetailUseCase
-import com.example.kotlintesttmdb.network.usecases.MoviesGenreUseCase
-import com.example.kotlintesttmdb.network.usecases.MoviesReviewsUseCase
+import com.example.kotlintesttmdb.network.usecases.*
 import org.koin.dsl.module
 
 val repoModule = module {
@@ -16,4 +13,6 @@ val repoModule = module {
     single<MoviesDetailRepo> { MoviesDetailRepoImpl(get()) }
     single { MoviesReviewsUseCase(get()) }
     single<MoviesReviewsRepo> { MoviesReviewsRepoImpl(get()) }
+    single { MoviesVideosUseCase(get()) }
+    single<MoviesVideosRepo> { MoviesVideosRepoImpl(get()) }
 }
