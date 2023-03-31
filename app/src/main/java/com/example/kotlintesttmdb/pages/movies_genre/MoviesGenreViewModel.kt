@@ -8,8 +8,10 @@ import com.example.kotlintesttmdb.network.Resource
 import com.example.kotlintesttmdb.network.usecases.GenresUseCase
 import com.example.kotlintesttmdb.network.usecases.MoviesGenreUseCase
 import com.example.kotlintesttmdb.pages.home.GenresState
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.isActive
 
 class MoviesGenreViewModel constructor(private val moviesGenreUseCase: MoviesGenreUseCase) :
     ViewModel() {
@@ -25,11 +27,11 @@ class MoviesGenreViewModel constructor(private val moviesGenreUseCase: MoviesGen
                 }
 
                 is Resource.Success -> {
-                    _state.value = MoviesGenreState(data = result.data)
+                    _state.value = MoviesGenreState(isLoading = false, data = result.data)
                 }
 
                 is Resource.Error -> {
-                    _state.value = MoviesGenreState(error = result.message ?: "error getting data")
+                    _state.value = MoviesGenreState(isLoading = false, error = result.message ?: "error getting data")
                 }
             }
         }.launchIn(viewModelScope)

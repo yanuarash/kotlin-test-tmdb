@@ -29,13 +29,14 @@ fun MoviesGenre(
     withGenres: String,
     navHostController: NavHostController,
 ) {
-    val movieGenreState = viewModel.state.value
-    val movieGenreList = movieGenreState.data?.results
     val page = 1
 
     LaunchedEffect(key1 = withGenres) {
         viewModel.getMoviesGenre(page, withGenres)
     }
+
+    val movieGenreState = viewModel.state.value
+    val movieGenreList = movieGenreState.data?.results
 
     Scaffold(topBar = {
         TopAppBar(title = { Text(text = "Movies Genre") })
