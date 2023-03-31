@@ -17,3 +17,7 @@ internal fun MoviesDetailDto.toDomain(): MoviesDetail {
 internal fun MoviesReviewsDto.toDomain(): MoviesReviews {
     return MoviesReviews(id, page, total_pages, total_results, results)
 }
+
+internal fun MoviesVideosDto.toDomain(): MoviesVideos {
+    return MoviesVideos(id, results)
+}

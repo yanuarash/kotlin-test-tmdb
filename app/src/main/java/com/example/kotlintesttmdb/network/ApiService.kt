@@ -35,4 +35,10 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("api_key") apiKey: String = Constants.API_KEY,
     ): Response<MoviesReviewsDto>
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMoviesVideos(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = Constants.API_KEY,
+    ): Response<MoviesVideosDto>
 }
