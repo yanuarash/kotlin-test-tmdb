@@ -36,11 +36,9 @@ fun MoviesDetail(
     Scaffold() { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
             if (moviesDetail != null) {
-//                Text("${moviesDetail.title} ${moviesDetail.release_date}")
-//                Button(onClick = {
-//                    navHostController.navigate("moviesReviews/${moviesDetail.id}")
-//                }){}
-                Column(modifier = Modifier.weight(2f).fillMaxHeight()) {
+                Column(modifier = Modifier
+                    .weight(2f)
+                    .fillMaxHeight()) {
                     Column() {
                         AsyncImage(
                             model = ImageRequest.Builder(LocalContext.current)
